@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PolicyDesk – Online Policy Renewal Portal</title>
+
+  <!-- Typography & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Application Navbar -->
+  <header class="app-navbar">
+    <div class="navbar-inner">
+      <a href="#" class="brand-identity" onclick="navigateToView('dashboard')">
+        <div class="brand-icon">P</div>
+        <div class="brand-title">
+          <h1>PolicyDesk</h1>
+          <span>Online Policy Renewal Portal</span>
+        </div>
+      </a>
+
+      <div class="navbar-right">
+        <!-- Interactive Portal Role Switcher -->
+        <div class="portal-switch-container">
+          <button class="portal-switch-btn active" data-role="customer">
+            <i class="fas fa-user"></i> Customer Portal
+          </button>
+          <button class="portal-switch-btn" data-role="admin">
+            <i class="fas fa-shield-alt"></i> Agent / Admin Portal
+          </button>
+        </div>
+
+        <div class="user-profile-badge">
+          <div class="user-avatar">KG</div>
+          <div class="user-meta">
+            <span id="user-display-name" class="user-name">Kinjal Gawali</span>
+            <span class="user-role">Policyholder</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="app-main">
+
+    <!-- VIEW 1: CUSTOMER LOGIN -->
+    <section id="view-login" class="view-section active">
+      <div class="auth-hero-card">
+        <div class="auth-header">
+          <div class="brand-icon" style="margin: 0 auto 16px auto; width: 50px; height: 50px; font-size: 1.6rem;">P</div>
+          <h2>Welcome to PolicyDesk</h2>
+          <p>Access your motor and health policies for instant online renewal</p>
+        </div>
+
+        <form id="form-login-auth">
+          <div class="form-group">
+            <label class="form-label">Registered Mobile Number or Email</label>
+            <div class="input-icon-group">
+              <i class="fas fa-mobile-alt input-icon-left"></i>
+              <input type="text" id="input-mobile" placeholder="Enter mobile number or email" value="9876543210" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">One-Time Password (OTP)</label>
+            <div class="otp-box-group">
+              <input type="text" maxlength="1" class="otp-field" value="1">
+              <input type="text" maxlength="1" class="otp-field" value="2">
+              <input type="text" maxlength="1" class="otp-field" value="3">
+              <input type="text" maxlength="1" class="otp-field" value="4">
+              <input type="text" maxlength="1" class="otp-field" value="5">
+              <input type="text" maxlength="1" class="otp-field" value="6">
+            </div>
+          </div>
+
+          <button type="submit" class="btn-app btn-app-primary">
+            Sign In & Access Policies <i class="fas fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- VIEW 2: CUSTOMER DASHBOARD -->
+    <section id="view-dashboard" class="view-section">
+      <div class="page-intro">
+        <div class="page-title">
+          <h2>My Insurance Portfolio</h2>
+          <p>Overview of active motor and health policies, upcoming renewal dates, and documents</p>
+        </div>
+        <div>
+          <button class="btn-app btn-app-secondary" style="width: auto;" onclick="switchPortalRole('admin')">
+            <i class="fas fa-chart-line"></i> Agent Management Dashboard
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="dashboard-stats-strip">
+        <div class="stat-widget">
+          <div class="stat-icon-wrapper icon-emerald">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="stat-details">
+            <div class="stat-val">3</div>
+            <div class="stat-lbl">Total Policies Enrolled</div>
+          </div>
+        </div>
+
+        <div class="stat-widget">
+          <div class="stat-icon-wrapper icon-amber">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="stat-details">
+            <div class="stat-val">1</div>
+            <div class="stat-lbl">Renewal Window Open (13 Days)</div>
+          </div>
+        </div>
+
+        <div class="stat-widget">
+          <div class="stat-icon-wrapper icon-blue">
+            <i class="fas fa-percentage"></i>
+          </div>
+          <div class="stat-details">
+            <div class="stat-val">20%</div>
+            <div class="stat-lbl">No-Claim Bonus Discount Earned</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Policy Grid -->
+      <div id="dashboard-policy-grid" class="policy-card-grid">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- VIEW 3: WORKFLOW STEP 1 - COMPARE QUOTES -->
+    <section id="view-quotes" class="view-section">
+      
+      <!-- Progress Bar -->
+      <div class="workflow-progress-bar">
+        <div class="step-item active">
+          <div class="step-number">1</div>
+          <span>Compare Quotes</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <span>Renewal Summary</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <span>Payment</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <span>Confirmation</span>
+        </div>
+      </div>
+
+      <div class="comparison-header-card">
+        <div>
+          <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--neutral-900);">Compare Renewal Quotes from 6 Insurers</h2>
+          <p id="renewal-title-display" style="font-size: 0.88rem; color: var(--neutral-500); margin-top: 2px;">Honda City 1.5 i-VTEC (MH-02-CB-4821)</p>
+        </div>
+        <button class="btn-app btn-app-secondary" style="width: auto;" onclick="navigateToView('dashboard')">
+          <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+      </div>
+
+      <div class="comparison-controls">
+        <div style="font-size: 0.88rem; color: var(--neutral-600); font-weight: 600;">
+          Showing quotes from Insurers A–D (via API) & E–F (via Rate Cards)
+        </div>
+        <div>
+          <select id="sort-quotes-select" class="select-custom">
+            <option value="premium-asc">Sort by Premium: Low to High</option>
+            <option value="premium-desc">Sort by Premium: High to Low</option>
+            <option value="insurer">Sort by Insurer Name</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Quotes Cards Grid -->
+      <div id="quotes-container-grid" class="quotes-comparison-grid">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- VIEW 4: WORKFLOW STEP 2 - RENEWAL SUMMARY -->
+    <section id="view-summary" class="view-section">
+
+      <!-- Progress Bar -->
+      <div class="workflow-progress-bar">
+        <div class="step-item completed">
+          <div class="step-number"><i class="fas fa-check"></i></div>
+          <span>Compare Quotes</span>
+        </div>
+        <div class="step-divider active"></div>
+        <div class="step-item active">
+          <div class="step-number">2</div>
+          <span>Renewal Summary</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <span>Payment</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <span>Confirmation</span>
+        </div>
+      </div>
+
+      <div class="checkout-wrapper">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--neutral-900);">Renewal Summary & Premium Breakdown</h2>
+          <p style="font-size: 0.88rem; color: var(--neutral-500);">Review policy details before proceeding to secure payment</p>
+        </div>
+
+        <div class="order-summary-box">
+          <div class="order-row">
+            <span class="row-key">Policy Number:</span>
+            <span id="summary-policy-no" class="row-val">MH-02-CB-4821</span>
+          </div>
+          <div class="order-row">
+            <span class="row-key">Selected Underwriter:</span>
+            <span id="summary-insurer-name" class="row-val">Insurer B</span>
+          </div>
+          <div class="order-row">
+            <span class="row-key">Gross Base Premium:</span>
+            <span id="summary-base-prem" class="row-val">₹13,200</span>
+          </div>
+          <div class="order-row">
+            <span class="row-key">No-Claim Bonus (NCB 20%):</span>
+            <span id="summary-ncb-disc" class="row-val" style="color: var(--primary-700);">- ₹2,640</span>
+          </div>
+          <div class="order-row">
+            <span class="row-key">GST @ 18%:</span>
+            <span id="summary-gst" class="row-val">+ ₹1,900</span>
+          </div>
+          <div class="order-row grand-total">
+            <span>Net Payable Premium:</span>
+            <span id="summary-total-amt">₹12,460</span>
+          </div>
+        </div>
+
+        <div style="font-size: 0.88rem; font-weight: 700; color: var(--neutral-700); margin-bottom: 12px;">Choose Payment Mode:</div>
+        <div class="payment-method-selector">
+          <div class="pay-method-option selected" onclick="selectPaymentMethod(this)">
+            <i class="fas fa-qrcode" style="font-size: 1.2rem; margin-bottom: 6px;"></i><br>UPI / QR Code
+          </div>
+          <div class="pay-method-option" onclick="selectPaymentMethod(this)">
+            <i class="fas fa-credit-card" style="font-size: 1.2rem; margin-bottom: 6px;"></i><br>Credit / Debit Card
+          </div>
+          <div class="pay-method-option" onclick="selectPaymentMethod(this)">
+            <i class="fas fa-university" style="font-size: 1.2rem; margin-bottom: 6px;"></i><br>Net Banking
+          </div>
+        </div>
+
+        <button id="btn-pay-now" class="btn-app btn-app-primary" onclick="handleCompletePayment()">
+          <i class="fas fa-lock"></i> Complete Renewal Payment
+        </button>
+
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 18px; font-size: 0.78rem; color: var(--neutral-500);">
+          <i class="fas fa-shield-alt" style="color: var(--primary-600);"></i>
+          <span>Encrypted 256-Bit TLS Connection • Zero Card Data Stored</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: WORKFLOW STEP 3 - SUCCESS & CONFIRMATION -->
+    <section id="view-success" class="view-section">
+
+      <!-- Progress Bar -->
+      <div class="workflow-progress-bar">
+        <div class="step-item completed">
+          <div class="step-number"><i class="fas fa-check"></i></div>
+          <span>Compare Quotes</span>
+        </div>
+        <div class="step-divider active"></div>
+        <div class="step-item completed">
+          <div class="step-number"><i class="fas fa-check"></i></div>
+          <span>Renewal Summary</span>
+        </div>
+        <div class="step-divider active"></div>
+        <div class="step-item completed">
+          <div class="step-number"><i class="fas fa-check"></i></div>
+          <span>Payment</span>
+        </div>
+        <div class="step-divider active"></div>
+        <div class="step-item active">
+          <div class="step-number">4</div>
+          <span>Confirmation</span>
+        </div>
+      </div>
+
+      <div class="success-hero-box">
+        <div class="success-badge-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+
+        <h2 style="font-size: 1.7rem; font-weight: 800; color: var(--neutral-900); margin-bottom: 6px;">
+          Policy Renewed Successfully!
+        </h2>
+        <p style="color: var(--neutral-500); font-size: 0.95rem;">
+          Your payment has been received and policy status updated to <strong>Active / Renewed</strong>
+        </p>
+
+        <!-- Renewal Confirmation Card -->
+        <div id="certificate-render-area" class="official-cert-card">
+          <!-- Injected dynamically via app.js -->
+        </div>
+
+        <div style="display: flex; gap: 16px; justify-content: center; margin-top: 24px;">
+          <button class="btn-app btn-app-primary" style="width: auto;" onclick="triggerDownloadPdf()">
+            <i class="fas fa-file-alt"></i> Download Renewal Confirmation
+          </button>
+          <button class="btn-app btn-app-secondary" style="width: auto;" onclick="navigateToView('dashboard')">
+            <i class="fas fa-home"></i> Return to Dashboard
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 6: AGENT / ADMIN PORTAL -->
+    <section id="view-admin" class="view-section">
+      <div class="page-intro">
+        <div class="page-title">
+          <h2>Agent & Admin Management Console</h2>
+          <p>Rate-card Excel integration for Insurers E & F, renewal statistics, and lapse reduction reporting</p>
+        </div>
+        <div>
+          <button class="btn-app btn-app-secondary" style="width: auto;" onclick="switchPortalRole('customer')">
+            <i class="fas fa-arrow-left"></i> Switch to Customer Portal
+          </button>
+        </div>
+      </div>
+
+      <div class="admin-dashboard-container">
+        
+        <!-- KPI METRICS -->
+        <div class="admin-card-section">
+          <div class="section-head">
+            <h3>Broker Renewal Portfolio Analytics</h3>
+            <span class="status-badge badge-active">Target: 22% to 12% Lapse</span>
+          </div>
+
+          <div class="kpi-metrics-grid">
+            <div class="kpi-tile">
+              <div class="kpi-tile-title">Total Portfolio Policies</div>
+              <div id="kpi-active-policies" class="kpi-tile-val">65,000</div>
+              <div class="kpi-tile-trend">Motor & Health Combined</div>
+            </div>
+            <div class="kpi-tile">
+              <div class="kpi-tile-title">Baseline Lapse Rate</div>
+              <div id="kpi-initial-lapse" class="kpi-tile-val" style="color: var(--accent-rose);">22.0%</div>
+              <div class="kpi-tile-trend" style="color: var(--accent-rose);">Before Automated Portal</div>
+            </div>
+            <div class="kpi-tile">
+              <div class="kpi-tile-title">Target Lapse Rate</div>
+              <div id="kpi-target-lapse" class="kpi-tile-val" style="color: var(--primary-700);">12.0%</div>
+              <div class="kpi-tile-trend">1-Year Executive Target</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXCEL RATE CARD UPLOAD -->
+        <div class="admin-card-section">
+          <div class="section-head">
+            <h3>Excel / CSV Rate Card Integration (Insurers E & F)</h3>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--neutral-500); margin-bottom: 20px;">
+            Insurers E and F provide rate cards in Excel/CSV format. Drag and drop `.csv` or `.xlsx` files here to parse rates. System rejects blank or negative premium values automatically.
+          </p>
+
+          <div id="ratecard-dropzone" class="excel-drop-zone">
+            <i class="fas fa-file-excel excel-icon"></i>
+            <h4 style="font-size: 1.1rem; color: var(--neutral-800); margin-bottom: 4px;">Drag & Drop Rate Card File (.csv / .xlsx)</h4>
+            <p style="font-size: 0.85rem; color: var(--neutral-500);">or click to browse from local computer</p>
+            <input type="file" id="ratecard-file-input" accept=".csv, .xlsx, .xls" style="display: none;">
+          </div>
+
+          <div style="display: flex; gap: 12px; margin-top: 16px;">
+            <button class="btn-app btn-app-secondary" style="width: auto; font-size: 0.85rem;" onclick="processUploadedRateCard({name: 'Insurer_E_RateCard_Valid.csv'})">
+              <i class="fas fa-check"></i> Test Valid CSV Upload (Insurer E)
+            </button>
+            <button class="btn-app btn-app-secondary" style="width: auto; font-size: 0.85rem; color: var(--accent-rose);" onclick="processUploadedRateCard({name: 'Insurer_F_RateCard_Invalid.csv'})">
+              <i class="fas fa-exclamation-triangle"></i> Test Invalid CSV Upload (Rejection Audit)
+            </button>
+          </div>
+
+          <div id="ratecard-validation-results" style="display: none; margin-top: 24px;">
+            <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--neutral-800); margin-bottom: 10px;">
+              Rate Card Upload Audit & Validation Results:
+            </h4>
+            <table class="validation-results-table">
+              <thead>
+                <tr>
+                  <th>Row</th>
+                  <th>Category</th>
+                  <th>Raw Premium</th>
+                  <th>Validation Status</th>
+                  <th>Audit Result</th>
+                </tr>
+              </thead>
+              <tbody id="validation-table-rows">
+                <!-- Injected via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <div class="container">
+      <p>© PolicyDesk Insurance Renewal Portal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

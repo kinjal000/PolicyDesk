@@ -1,0 +1,944 @@
+/* ==========================================================================
+   PolicyDesk – Professional Modern Theme (Square Corners & Compact 100% Zoom)
+   ========================================================================== */
+
+:root {
+  /* Brand Color Palette */
+  --primary-50: #f0fdf4;
+  --primary-100: #dcfce7;
+  --primary-200: #bbf7d0;
+  --primary-400: #4ade80;
+  --primary-500: #22c55e;
+  --primary-600: #16a34a;
+  --primary-700: #15803d;
+  --primary-800: #166534;
+  --primary-900: #14532d;
+  --primary-950: #052e16;
+
+  --accent-teal: #0d9488;
+  --accent-blue: #2563eb;
+  --accent-amber: #d97706;
+  --accent-emerald: #059669;
+  --accent-rose: #dc2626;
+
+  --neutral-50: #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
+
+  --bg-app: #f4f6f8;
+  --card-bg: #ffffff;
+  --border-light: #e2e8f0;
+  --border-dark: #cbd5e1;
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+
+  /* SQUARE CORNERS SYSTEM */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --transition-fast: all 0.15s ease-in-out;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important; /* Force Sharp Square Corners Everywhere */
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--neutral-800);
+  line-height: 1.45;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Header & Portal Switcher (Compact 100% Zoom)
+   ========================================================================== */
+
+.app-navbar {
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  box-shadow: var(--shadow-xs);
+}
+
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  background: var(--primary-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.brand-title h1 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--neutral-900);
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+}
+
+.brand-title span {
+  font-size: 0.72rem;
+  color: var(--neutral-500);
+  font-weight: 500;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Portal Switcher */
+.portal-switch-container {
+  background-color: var(--neutral-100);
+  padding: 3px;
+  display: flex;
+  border: 1px solid var(--border-dark);
+}
+
+.portal-switch-btn {
+  border: none;
+  background: transparent;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--neutral-600);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.portal-switch-btn.active {
+  background-color: var(--primary-800);
+  color: #ffffff;
+}
+
+.user-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 12px;
+  border-left: 1px solid var(--neutral-200);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--primary-100);
+  color: var(--primary-800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: 1px solid var(--primary-200);
+}
+
+.user-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--neutral-900);
+}
+
+.user-role {
+  font-size: 0.7rem;
+  color: var(--neutral-500);
+}
+
+/* ==========================================================================
+   Main Content Layout (Fits Perfectly at 100% Zoom)
+   ========================================================================== */
+
+.app-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.view-section {
+  display: none;
+}
+
+.view-section.active {
+  display: block;
+}
+
+/* Workflow Step Progress Bar */
+.workflow-progress-bar {
+  background-color: var(--card-bg);
+  padding: 12px 20px;
+  border: 1px solid var(--border-light);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-xs);
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--neutral-400);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.step-item.active {
+  color: var(--primary-800);
+}
+
+.step-item.completed {
+  color: var(--neutral-700);
+}
+
+.step-number {
+  width: 24px;
+  height: 24px;
+  background-color: var(--neutral-100);
+  color: var(--neutral-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid var(--neutral-300);
+}
+
+.step-item.active .step-number {
+  background-color: var(--primary-800);
+  color: #ffffff;
+  border-color: var(--primary-900);
+}
+
+.step-item.completed .step-number {
+  background-color: var(--primary-100);
+  color: var(--primary-800);
+  border-color: var(--primary-300);
+}
+
+.step-divider {
+  flex: 1;
+  height: 1px;
+  background-color: var(--neutral-200);
+  margin: 0 12px;
+  max-width: 60px;
+}
+
+.step-divider.active {
+  background-color: var(--primary-600);
+}
+
+/* ==========================================================================
+   Auth / Login Screen
+   ========================================================================== */
+
+.auth-hero-card {
+  max-width: 400px;
+  margin: 30px auto;
+  background-color: var(--card-bg);
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-dark);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-header h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--neutral-900);
+  letter-spacing: -0.3px;
+  margin-bottom: 4px;
+}
+
+.auth-header p {
+  font-size: 0.82rem;
+  color: var(--neutral-500);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--neutral-700);
+  margin-bottom: 6px;
+}
+
+.input-icon-group {
+  position: relative;
+}
+
+.input-icon-group input {
+  width: 100%;
+  padding: 9px 12px 9px 38px;
+  border: 1px solid var(--border-dark);
+  font-size: 0.88rem;
+  font-family: inherit;
+  outline: none;
+  background-color: #fff;
+}
+
+.input-icon-group input:focus {
+  border-color: var(--primary-700);
+}
+
+.input-icon-left {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--neutral-400);
+  font-size: 0.95rem;
+}
+
+.otp-box-group {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 14px 0;
+}
+
+.otp-field {
+  width: 40px;
+  height: 44px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border: 1px solid var(--border-dark);
+  outline: none;
+}
+
+.otp-field:focus {
+  border-color: var(--primary-700);
+}
+
+/* Button System */
+.btn-app {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-decoration: none;
+  width: 100%;
+}
+
+.btn-app-primary {
+  background-color: var(--primary-800);
+  color: #ffffff;
+}
+
+.btn-app-primary:hover {
+  background-color: var(--primary-900);
+}
+
+.btn-app-secondary {
+  background-color: var(--neutral-100);
+  color: var(--neutral-800);
+  border: 1px solid var(--border-dark);
+}
+
+.btn-app-secondary:hover {
+  background-color: var(--neutral-200);
+  color: var(--neutral-900);
+}
+
+/* ==========================================================================
+   Customer Dashboard (Compact Proportions)
+   ========================================================================== */
+
+.page-intro {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.page-title h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--neutral-900);
+  letter-spacing: -0.3px;
+}
+
+.page-title p {
+  font-size: 0.82rem;
+  color: var(--neutral-500);
+  margin-top: 2px;
+}
+
+.dashboard-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-widget {
+  background-color: var(--card-bg);
+  padding: 16px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.stat-icon-wrapper {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.icon-emerald { background-color: var(--primary-100); color: var(--primary-800); border: 1px solid var(--primary-200); }
+.icon-amber { background-color: #fef3c7; color: var(--accent-amber); border: 1px solid #fde68a; }
+.icon-blue { background-color: #dbeafe; color: var(--accent-blue); border: 1px solid #bfdbfe; }
+
+.stat-details .stat-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--neutral-900);
+  line-height: 1.1;
+}
+
+.stat-details .stat-lbl {
+  font-size: 0.78rem;
+  color: var(--neutral-500);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Policy Cards Grid */
+.policy-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 18px;
+}
+
+.policy-item-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-light);
+  padding: 20px;
+  box-shadow: var(--shadow-xs);
+  transition: var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.policy-item-card:hover {
+  border-color: var(--primary-600);
+}
+
+.policy-item-card.renewal-urgent {
+  border-top: 3px solid var(--accent-amber);
+}
+
+.policy-item-card.renewed-success {
+  border-top: 3px solid var(--primary-700);
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.category-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 3px 8px;
+  border: 1px solid transparent;
+}
+
+.chip-motor-bg { background-color: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+.chip-health-bg { background-color: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
+
+.status-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border: 1px solid transparent;
+}
+
+.badge-renewal-due { background-color: #fef3c7; color: #92400e; border-color: #fde68a; }
+.badge-active { background-color: #dcfce7; color: #15803d; border-color: #bbf7d0; }
+.badge-renewed { background-color: #d1fae5; color: #065f46; border-color: #a7f3d0; }
+.badge-lapsed { background-color: #fee2e2; color: #991b1b; border-color: #fecaca; }
+
+.policy-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--neutral-900);
+  margin-bottom: 2px;
+}
+
+.policy-insurer-name {
+  font-size: 0.8rem;
+  color: var(--neutral-500);
+  margin-bottom: 14px;
+}
+
+.policy-key-details {
+  border-top: 1px solid var(--border-light);
+  padding-top: 12px;
+  margin-bottom: 16px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  margin-bottom: 6px;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.row-key { color: var(--neutral-500); }
+.row-val { font-weight: 600; color: var(--neutral-800); }
+
+/* ==========================================================================
+   Quote Comparison View
+   ========================================================================== */
+
+.comparison-header-card {
+  background-color: var(--card-bg);
+  padding: 16px 20px;
+  border: 1px solid var(--border-light);
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-xs);
+}
+
+.comparison-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.select-custom {
+  padding: 7px 12px;
+  border: 1px solid var(--border-dark);
+  background-color: var(--card-bg);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--neutral-800);
+  outline: none;
+  font-family: inherit;
+}
+
+.quotes-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.quote-option-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-light);
+  padding: 20px;
+  box-shadow: var(--shadow-xs);
+  transition: var(--transition-fast);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quote-option-card:hover {
+  border-color: var(--primary-700);
+}
+
+.quote-option-card.recommended {
+  border: 2px solid var(--primary-800);
+}
+
+.recommended-ribbon {
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  background-color: var(--primary-800);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.insurer-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.insurer-avatar-box {
+  width: 38px;
+  height: 38px;
+  background-color: var(--neutral-100);
+  border: 1px solid var(--border-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: var(--neutral-800);
+  font-size: 0.95rem;
+}
+
+.insurer-meta h4 {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--neutral-900);
+}
+
+.insurer-meta span {
+  font-size: 0.72rem;
+  color: var(--neutral-500);
+}
+
+.price-display-box {
+  background-color: var(--neutral-50);
+  padding: 12px;
+  text-align: center;
+  margin-bottom: 14px;
+  border: 1px solid var(--border-light);
+}
+
+.price-amount {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-900);
+  letter-spacing: -0.4px;
+}
+
+.price-breakdown-sub {
+  font-size: 0.75rem;
+  color: var(--neutral-500);
+  margin-top: 1px;
+}
+
+.benefits-list {
+  list-style: none;
+  margin-bottom: 18px;
+  font-size: 0.82rem;
+}
+
+.benefits-list li {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--neutral-600);
+}
+
+.benefits-list li i {
+  color: var(--primary-700);
+  font-size: 0.88rem;
+}
+
+/* ==========================================================================
+   Checkout & Payment View
+   ========================================================================== */
+
+.checkout-wrapper {
+  max-width: 520px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-dark);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.order-summary-box {
+  background-color: var(--neutral-50);
+  padding: 14px 18px;
+  margin: 18px 0;
+  border: 1px solid var(--border-light);
+}
+
+.order-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.85rem;
+}
+
+.order-row.grand-total {
+  border-top: 2px solid var(--neutral-300);
+  margin-top: 8px;
+  padding-top: 10px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--primary-900);
+}
+
+.payment-method-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.pay-method-option {
+  border: 1px solid var(--border-dark);
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--neutral-700);
+  background-color: var(--card-bg);
+}
+
+.pay-method-option:hover, .pay-method-option.selected {
+  border-color: var(--primary-800);
+  background-color: var(--primary-50);
+  color: var(--primary-900);
+}
+
+/* ==========================================================================
+   Renewal Confirmation Screen
+   ========================================================================== */
+
+.success-hero-box {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-dark);
+  text-align: center;
+}
+
+.success-badge-icon {
+  width: 64px;
+  height: 64px;
+  background-color: var(--primary-100);
+  color: var(--primary-800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin: 0 auto 16px auto;
+  border: 1px solid var(--primary-200);
+}
+
+.official-cert-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-dark);
+  padding: 20px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.cert-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--primary-800);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Agent / Admin Portal
+   ========================================================================== */
+
+.admin-dashboard-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.admin-card-section {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-light);
+  padding: 22px;
+  box-shadow: var(--shadow-xs);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-head h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--neutral-900);
+}
+
+.kpi-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.kpi-tile {
+  background-color: var(--neutral-50);
+  padding: 16px;
+  border: 1px solid var(--border-light);
+}
+
+.kpi-tile-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--neutral-500);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.kpi-tile-val {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--neutral-900);
+  margin: 4px 0 2px 0;
+}
+
+.kpi-tile-trend {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary-800);
+}
+
+/* Drag & Drop Zone */
+.excel-drop-zone {
+  border: 2px dashed var(--border-dark);
+  padding: 28px;
+  text-align: center;
+  background-color: var(--neutral-50);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.excel-drop-zone:hover, .excel-drop-zone.dragover {
+  border-color: var(--primary-700);
+  background-color: var(--primary-50);
+}
+
+.excel-icon {
+  font-size: 2.2rem;
+  color: var(--primary-800);
+  margin-bottom: 8px;
+}
+
+.validation-results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 0.82rem;
+}
+
+.validation-results-table th, .validation-results-table td {
+  padding: 9px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.validation-results-table th {
+  background-color: var(--neutral-100);
+  color: var(--neutral-700);
+  font-weight: 700;
+}
+
+/* Footer */
+.app-footer {
+  margin-top: auto;
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border-light);
+  padding: 16px 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--neutral-500);
+}
